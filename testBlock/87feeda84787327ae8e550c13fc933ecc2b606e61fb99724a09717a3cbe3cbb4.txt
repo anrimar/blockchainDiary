@@ -1,0 +1,1 @@
+{"timestamp":"1675","data":"Ньютон за чашечкой чая рассказывал о корпускулярной теории света","previousHash":"40a59c2e1407e97dfdf0f4dd9ab4c83bb826339b634bbfa0d70cb0abb8b95b3b","hash":"87feeda84787327ae8e550c13fc933ecc2b606e61fb99724a09717a3cbe3cbb4"}

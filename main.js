@@ -118,7 +118,7 @@ class FileWorker{
 let newDiary = new Blockchain();
 console.log("chain ok");
 //Создаем объект для работы с файлами
-let fw = new FileWorker('D:\\testBlock\\');
+let fw = new FileWorker('/testBlock/');
 console.log("fw ok");
 //Сканируем блоки в файловой системе
 let oldDiary = fw.scanDiary();
