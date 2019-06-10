@@ -83,11 +83,13 @@ class FileWorker{
             let blocks = [];
             fs.readdirSync(this.directory).forEach(file=>{
                 const buffer = fs.readFileSync(this.directory+file, "utf8");
-                    blocks.push(JSON.parse(buffer.toString())); 
+                    let parsedBlock = JSON.parse(buffer.toString());
+                    let trueBlok = new Block(parsedBlock.timestamp,parsedBlock.data,parsedBlock.previousHash);
+                    blocks.push(trueBlok); 
             })
 
             let parsedBlockchain = new Blockchain();
-            while(blocks.length>0){
+            while(blocks.length>1){
                 for(const b in blocks){
                     if(parsedBlockchain.addBlock(blocks[b])){
                         blocks.splice(b,1);
@@ -114,13 +116,13 @@ class FileWorker{
 // Запуск программы 
 // Создаем объект дневник
 let newDiary = new Blockchain();
-
+console.log("chain ok");
 //Создаем объект для работы с файлами
 let fw = new FileWorker('D:\\testBlock\\');
-
+console.log("fw ok");
 //Сканируем блоки в файловой системе
 let oldDiary = fw.scanDiary();
-
+console.log("scan ok");
 //Выводим полученые из файловой системы блоки
 for(const page of oldDiary){
     console.log(page);
@@ -134,7 +136,7 @@ for(const page of oldDiary){
 }
 
 //Проверяем целостность
-console.log("Целостность дневника: "+diary.isChainValid());
+console.log("Целостность дневника: "+oldDiary.isChainValid());
 
 //ОК
 console.log('OK');
